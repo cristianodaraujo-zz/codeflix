@@ -1,0 +1,34 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>CodeFlix - Menu</ion-title>
+      <button ion-item menuClose color="dark" (click)="openPageChangePassword()">
+        <h2 class="user-info">
+          <ion-avatar float-left>
+            <img [src]="urlGravatar"/>
+          </ion-avatar>
+          <span float-left>{{user?.name}}</span>
+          <ion-icon name="key"></ion-icon>
+        </h2>
+      </button>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" color="dark">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer>
+    <button menuClose ion-button text-right color="light" block clear icon-right (click)="logout()">
+      Sair
+      <ion-icon name="exit"></ion-icon>
+    </button>
+  </ion-footer>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
